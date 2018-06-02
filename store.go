@@ -15,8 +15,10 @@ type dbStore struct {
   db *sql.DB
 }
 
+const cost int = bcrypt.DefaultCost
+
 func hashedPassword(password string) string {
-  bytes, err := bcrypt.GenerateFromPassword([]byte(password), 8)
+  bytes, err := bcrypt.GenerateFromPassword([]byte(password), cost)
 
   if err != nil {
     fmt.Println("GenerateFromPassword error: %s", err)
