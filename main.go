@@ -1,12 +1,10 @@
 package main
 
 import (
-  "encoding/json"
   "fmt"
   "net/http"
   "database/sql"
   "github.com/gorilla/mux"
-  "io/ioutil"
   _"github.com/lib/pq"
 )
 
