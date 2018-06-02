@@ -12,9 +12,11 @@ type Credentials struct {
   Password string `json: "password"`
 }
 
+const errNum int = 500
+
 func InternalServerError(err error, w http.ResponseWriter) {
   if err != nil {
-    http.Error(w, err.Error(), 500)
+    http.Error(w, err.Error(), errNum)
     return
   }
 }
