@@ -3,7 +3,6 @@ package main
 import (
   "net/http"
   "fmt"
-  "encoding/json"
 )
 
 type Credentials struct {
@@ -33,4 +32,6 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
   if(err != nil) {
     fmt.Println(err)
   }
+
+  http.Redirect(w, r, "/signup", http.StatusFound)
 }
