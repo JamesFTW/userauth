@@ -27,7 +27,7 @@ func hashedPassword(password string) string {
 }
 
 func (store *dbStore) CreateUser(creds *Credentials) error {
-  _, err := store.db.Query("INSERT INTRO USERS(username, password) VALUES ($1,$2)", creds.Username, hashedPassword(creds.Password))
+  _, err := store.db.Query("INSERT INTO USERS(username, password) VALUES ($1,$2)", creds.Username, hashedPassword(creds.Password))
 
   if err != nil {
     fmt.Println(err)
