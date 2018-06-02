@@ -30,7 +30,7 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
   if err != nil {
     http.Error(w, err.Error(), 500)
     return
-	}
+  }
 
   Username, err := info.Username, nil
   Password, err := info.Password, nil
@@ -38,7 +38,7 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
   if err != nil {
     http.Error(w, err.Error(), 500)
     return
-	}
+  }
 
   user.Username = string(Username)
   user.Password = string(Password)
