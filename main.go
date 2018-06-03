@@ -12,6 +12,7 @@ func newRouter() *mux.Router {
   r := mux.NewRouter()
 
   r.HandleFunc("/signup", SignUp).Methods("POST")
+  r.HandleFunc("/signin", SignIn).Methods("POST")
   r.HandleFunc("/hello", handler).Methods("POST")
 
 

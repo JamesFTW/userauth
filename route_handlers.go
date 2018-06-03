@@ -22,7 +22,6 @@ func InternalServerError(err error, w http.ResponseWriter) {
 }
 
 func SignUp(w http.ResponseWriter, r *http.Request) {
-
   b, err := ioutil.ReadAll(r.Body)
   defer r.Body.Close()
 
@@ -48,4 +47,33 @@ func SignUp(w http.ResponseWriter, r *http.Request) {
   if(err != nil) {
     fmt.Println(err)
   }
+}
+
+func SignIn(w http.ResponseWriter, r *http.Request) {
+  b, err := ioutil.ReadAll(r.Body)
+  defer r.Body.Close()
+
+  var userCheck Credentials
+
+  InternalServerError(err, w)
+
+  user := Credentials{}
+  err = json.Unmarshal(b, &userCheck)
+
+  InternalServerError(err, w)
+
+  Username, err := userCheck.Username, nil
+  Password, err := userCheck.Password, nil
+
+  InternalServerError(err, w)
+
+  user.Username = string(Username)
+  user.Password = string(Password)
+
+  err = store.SignInUser(&user, w)
+
+  if err != nil {
+    w.WriteHeader(http.StatusUnauthorized)
+  }
+
 }
